@@ -1,0 +1,33 @@
+type Query {
+  "fetch list of all users"
+  users: [User!]!
+
+  "fetch information about logged in user"
+  me: User!
+}
+
+type Mutation {
+  "Register new user using `username` and `password`"
+  signup(username: String!, password: String!, avatar: String): Auth!
+
+  "Authenticate user to generate login token"
+  login(username: String!, password: String!): Auth!
+
+  "removes an existing user"
+  removeUser(id: ID!): User!
+}
+
+type User {
+  _id: ID!
+  isActive: Boolean!
+  avatar: String!
+  username: String!
+  createdAt: String!
+  lastSeen: String!
+}
+
+type Auth {
+  _id: ID!
+  username: String!
+  token: String!
+}
